@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  servicio_laravel_rifa:
+    image: gabrieljesusdev/api_rifa:iniciov
+    container_name: servicio_laravel_rifa
+    environment:
+      - APP_ENV=local
+      - APP_KEY=${APP_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+    volumes:
+      - app_code:/var/www/html
+    depends_on:
+      - services_db_rifa
+    networks:
+      - casaos_network
+
+  services_db_rifa:
+    image: mysql:8.0
+    container_name: services_db_rifa
+    ports:
+      - '3002:3306'
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - casaos_network
+
+  servicio_web:
+    image: nginx:alpine
+    ports:
+      - "3001:80"  # Puerto fijo para acceso externo (modificable si necesitas otro)
+    volumes:
+      - app_code:/var/www/html
+      - ./nginx_config/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - servicio_laravel_rifa
+    networks:
+      - casaos_network
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1-apache
+    ports:
+      - '3003:80'
+    links:
+      - services_db_rifa
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=services_db_rifa
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=123456
+    networks:
+      - casaos_network
+
+volumes:
+  db_data:
+  app_code:
+
+networks:
+  casaos_network:
+    driver: bridge

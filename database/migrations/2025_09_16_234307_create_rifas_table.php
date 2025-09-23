@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('fecha_inicio')->nullable();
             $table->dateTime('fecha_fin')->nullable();
             $table->dateTime('fecha_sorteo')->nullable();
-            $table->enum('estado',["inactivo","activa"])->default('activo');
+            $table->enum('estado',["inactivo","activo"])->default('activo');
             $table->timestamps();
         });
     }
