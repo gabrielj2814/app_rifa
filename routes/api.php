@@ -12,13 +12,19 @@ Route::get('/helpcheck', function () {
     return response()->json(['status' => 'ok']);
 });
 
+// Route::prefix('app')->group(function () {
+//     Route::prefix('v1')->group(function () {
+//         Route::middleware('auth:sanctum')->group(function () {
+
+//         });
+//     });
+// });
+
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
-    Route::middleware('auth:sanctum')->group(function () {
-        // Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
-        // Route::get('/user', [\App\Http\Controllers\AuthController::class, 'user']);w
-    });
+    Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
+
 });
 
 

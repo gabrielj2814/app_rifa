@@ -10,9 +10,10 @@ interface Auth
 {
     public function login(AuthCredencialesData $credentials): string;
 
-    public function logout(): void;
+    public function verify(AuthCredencialesData $credentials): bool;
 
-    public function user(): User;
+    public function logout(string $token): void;
+
 }
 
 
