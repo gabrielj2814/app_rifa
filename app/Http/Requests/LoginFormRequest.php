@@ -48,7 +48,7 @@ class LoginFormRequest extends FormRequest
         ];
     }
 
-     protected function failedValidation(Validator $validator):JsonResponse
+    protected function failedValidation(Validator $validator):JsonResponse
     {
         $errors=$validator->errors();
         $response=ApiResponse::error("Error",422,$errors);

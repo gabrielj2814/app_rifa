@@ -13,8 +13,9 @@
 
 
 ## Cliente
-- [ ] registrar cliente
+- [X] registrar cliente
 - [ ] actualizar datos de cliente
+- [ ] enviar correo con pin de seguridad
 - [ ] cambiar contraseña
 - [ ] comprar boleto de rifa
 - [ ] devolución de boleto de rifa

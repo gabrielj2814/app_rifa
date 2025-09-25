@@ -6,17 +6,19 @@ namespace App\Services;
 use App\Contracts\User;
 use App\Data\CreateUserData;
 use App\Models\User as ModelsUser;
+use App\Repository\UserRepository;
 
 class ClienteServices implements User
 {
     public function __construct(
-        protected User $userRepository
+        protected UserRepository $userRepository
     )
     {}
 
     public function createUser(CreateUserData $data): ModelsUser
     {
         $usuario= $this->userRepository->createUser($data);
+        $usuario->assignRole('Customer');
         return $usuario;
     }
 

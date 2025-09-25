@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,20 +25,16 @@ Route::get('/helpcheck', function () {
 Route::prefix('auth')->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
-
 });
 
+Route::prefix("account")->group(function () {
+    Route::prefix("customer")->group(function () {
+        Route::post("/create",[ClienteController::class,"registrar"]);
+    });
+
+    // Route::prefix("employee")->group(function () {
+
+    // });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+});
