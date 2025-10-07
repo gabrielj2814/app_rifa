@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
@@ -13,13 +14,19 @@ Route::get('/helpcheck', function () {
     return response()->json(['status' => 'ok']);
 });
 
-// Route::prefix('app')->group(function () {
-//     Route::prefix('v1')->group(function () {
-//         Route::middleware('auth:sanctum')->group(function () {
+Route::prefix('app/v1')->group(function () {
 
-//         });
-//     });
-// });
+    Route::prefix('personal')->middleware('auth:sanctum')->group(function () {
+        Route::get('/',                                      [AdminController::class, 'getAll']);
+        Route::get('/{id}',                                  [AdminController::class, 'consultById']);
+        Route::post('/',                                     [AdminController::class, 'create']);
+        Route::delete('/{id}',                               [AdminController::class, 'delete']);
+        Route::post('/filtrar-paginate',                     [AdminController::class, 'filtrarPaginate']);
+        Route::post('/filtrar',                              [AdminController::class, 'filtrarWithoutPaginate']);
+        // Route::post('/cambiar-permiso-usuario',              [AdminController::class, 'cambiarPermisoUsuario']);
+    });
+
+});
 
 
 Route::prefix('auth')->group(function () {
