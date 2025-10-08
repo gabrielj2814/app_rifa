@@ -26,6 +26,16 @@ Route::prefix('app/v1')->group(function () {
         Route::put('/actualizar-roles',                      [AdminController::class, 'actualizarRoles']);
     });
 
+    Route::prefix("rifa")->group(function () {
+        // Route::get("/",[]);
+        // Route::post("/",[]);
+        // Route::get("/{id}",[]);
+        // Route::put("/{id}/status/alta",[]);
+        // Route::put("/{id}/status/baja",[]);
+        // Route::post("/filtrar-paginate",[]);
+        // Route::post("/filtrar",[]);
+    });
+
 });
 
 
