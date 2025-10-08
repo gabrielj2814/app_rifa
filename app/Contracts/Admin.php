@@ -12,7 +12,7 @@ interface Admin extends ContractsUser
     // Define admin-specific methods here
 
     public function createAdmin(CreateAdminData $data): User;
-    public function actualizarRoles(int $id, array $roles): User;
+    public function actualizarRoles(int $id, array $roles): void;
 }
 
 

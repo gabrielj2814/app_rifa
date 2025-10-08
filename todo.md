@@ -17,12 +17,14 @@
   - [ ] crear
   - [ ] aditar info rifa
   - [ ] dar de alta la rifa (al dar de alta ya no se puede editar y solo podra dar de alta la rifa teniendo al menos un premio registrado)
+  - [ ] extendes tiempo de rifa (penzarlo con mas detenimiento)
   - [ ] terminar rifa
+  - [ ] crear tarea programada que culmine las rifas
 - [ ] personal (1)
   - [ ] al crear enviar un correo con la clave del usuario por que se auto genera (no hacer por ahora)
   - [X] eliminar
   - [X] filtrar (no se pueden ver los cliente)
-  - [ ] cambiar permisos
+  - [X] cambiar permisos
 - [ ] devoluciones (8)
 - [ ] CRM
   - [ ] filtrar 

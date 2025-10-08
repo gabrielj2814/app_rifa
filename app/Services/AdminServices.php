@@ -72,10 +72,9 @@ class AdminServices implements Admin
         return $this->userRepository->getFiltredUsersPaginated($filters,$perPage);
     }
 
-    public function actualizarRoles(int $id, array $roles): ModelsUser
+    public function actualizarRoles(int $id, array $roles): void
     {
         $this->userRepository->actualizarRoles($id,$roles);
-        return $this->userRepository->consultUserById($id);
     }
 
 

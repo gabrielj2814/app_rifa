@@ -12,34 +12,30 @@ class UserRepository
 {
     // Implementation of user repository methods
 
-    function __construct(
-        protected User $userModel
-    )
-    {}
 
     public function createUser(CreateUserData $data): User
     {
-        return $this->userModel->create($data->toArray());
+        return User::create($data->toArray());
     }
 
     public function consultUserByEmail(string $email): ?User
     {
-        return $this->userModel->where('email', $email)->first();
+        return User::where('email', $email)->first();
     }
 
     public function consultUserById(int $id): ?User
     {
-        return $this->userModel->find($id);
+        return User::find($id);
     }
 
     public function consultAll():Collection
     {
-        return $this->userModel->all();
+        return User::all();
     }
 
     public function deleteUser(int $id): bool
     {
-        $user = $this->userModel->find($id);
+        $user = User::find($id);
         if ($user) {
             return $user->delete();
         }
@@ -76,7 +72,7 @@ class UserRepository
 
     public function removerRolUsuario(int $id, string $rol): bool
     {
-        $user = $this->userModel->find($id);
+        $user = User::find($id);
         if ($user) {
             $user->removeRole($rol);
             return true;
@@ -86,7 +82,7 @@ class UserRepository
 
     public function actualizarRoles(int $id, array $roles): bool
     {
-        $user = $this->userModel->find($id);
+        $user = User::find($id);
         if ($user) {
             $user->syncRoles($roles);
             return true;

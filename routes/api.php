@@ -19,11 +19,11 @@ Route::prefix('app/v1')->group(function () {
     Route::prefix('personal')->middleware('auth:sanctum')->group(function () {
         Route::get('/',                                      [AdminController::class, 'getAll']);
         Route::get('/{id}',                                  [AdminController::class, 'consultById']);
-        Route::post('/',                                     [AdminController::class, 'create']);
         Route::delete('/{id}',                               [AdminController::class, 'delete']);
+        Route::post('/',                                     [AdminController::class, 'create']);
         Route::post('/filtrar-paginate',                     [AdminController::class, 'filtrarPaginate']);
         Route::post('/filtrar',                              [AdminController::class, 'filtrarWithoutPaginate']);
-        // Route::post('/cambiar-permiso-usuario',              [AdminController::class, 'cambiarPermisoUsuario']);
+        Route::put('/actualizar-roles',                      [AdminController::class, 'actualizarRoles']);
     });
 
 });

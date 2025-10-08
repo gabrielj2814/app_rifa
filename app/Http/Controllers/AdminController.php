@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Admin;
 use App\Helpers\ApiResponse;
+use App\Http\Requests\ActualizarRolesFormRequest;
 use App\Http\Requests\CreateAdminFormRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -83,17 +84,12 @@ class AdminController extends Controller
         return ApiResponse::success($respuesta);
     }
 
-    // public function cambiarPermisoUsuario(Request $request):JsonResponse{
-    //     //code to change user roles
-    //     $id = $request->input('user_id');
-    //     $roles = $request->input('roles', []);
+    public function actualizarRoles(ActualizarRolesFormRequest $request):JsonResponse{
+        //code to change user roles
+        $data= $request->data;
 
-    //     if(!$this->user->consultUserById($id)){
-    //         return ApiResponse::error('Usuario no encontrado',404);
-    //     }
+        $this->user->actualizarRoles($data->user_id, $data->roles);
 
-    //     $respuesta = $this->user->actualizarRoles($id, $roles);
-
-    //     return ApiResponse::success($respuesta);
-    // }
+        return ApiResponse::success(null,'Roles actualizados',204);
+    }
 }
