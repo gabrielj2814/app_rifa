@@ -10,6 +10,18 @@ class Rifa extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'fecha_sorteo',
+        'fecha_inicio',
+        'fecha_fin',
+        'precio_boleto',
+        'total_boletos',
+        'estado',
+    ];
+
+
     public function boletos(): HasMany
     {
         return $this->hasMany(Boleto::class);

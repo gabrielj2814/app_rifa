@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RifaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,13 +28,13 @@ Route::prefix('app/v1')->group(function () {
     });
 
     Route::prefix("rifa")->group(function () {
-        // Route::get("/",[]);
-        // Route::post("/",[]);
-        // Route::get("/{id}",[]);
-        // Route::put("/{id}/status/alta",[]);
-        // Route::put("/{id}/status/baja",[]);
-        // Route::post("/filtrar-paginate",[]);
-        // Route::post("/filtrar",[]);
+        Route::get("/",                         [RifaController::class,"getAll"]);
+        Route::post("/",                        [RifaController::class,"createRifa"]);
+        Route::get("/{id}",                     [RifaController::class,"getById"]);
+        Route::put("/{id}",                     [RifaController::class,"editRifa"]);
+        Route::post("/filtrar-paginate",        [RifaController::class,"paginate"]);
+        Route::post("/filtrar",                 [RifaController::class,"filtrar"]);
+        Route::get("/{id}/finalizar",           [RifaController::class,"finalizarRifa"]);
     });
 
 });

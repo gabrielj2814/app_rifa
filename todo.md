@@ -13,11 +13,11 @@
   - [ ] modificar datos
   - 
 - [ ] crear rifa (2)
-  - [ ] apregar premios a la rifa
-  - [ ] crear
-  - [ ] aditar info rifa
-  - [ ] dar de alta la rifa (al dar de alta ya no se puede editar y solo podra dar de alta la rifa teniendo al menos un premio registrado)
-  - [ ] extendes tiempo de rifa (penzarlo con mas detenimiento)
+  - [ ] agregar premios a la rifa
+  - [X] crear
+  - [X] aditar info rifa
+    - [X] agregar fecha de inicio y fecha de cierre de la rifa
+    - [X] agregar fecha de sorteo
   - [ ] terminar rifa
   - [ ] crear tarea programada que culmine las rifas
 - [ ] personal (1)
